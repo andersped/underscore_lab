@@ -102,3 +102,81 @@ var shuffle = (function(array){
 
 console.log(shuffle([1, 2, 3, 4, 5, 6]));
 
+//self executing object () 
+
+var _ = (function(){
+        return{
+          each: function(arr, funk){
+            for (var i = 0; i < arr.length; i++){
+              funk(arr[i]);
+            }
+            }
+        };
+
+})();
+
+_.each([1,2,3,4],console.log);
+
+
+//Part 2
+
+
+//_.each
+var _ = (function(){
+    return{
+    each: function(array1, pickFunction){
+    for (var i = 0; i < array1.length; i++){
+      pickFunction(array1[i]);
+    }
+    }
+  }; 
+  
+})();
+_.each([1, 2, 3], alert);
+
+//.compact
+vavar _ = (function(){
+  return{
+    compact: function(array1){
+      for (var i = 0; i < array1.length; i++){
+        if(array1[i] === undefined){
+          delete array1[i];
+        }
+        return array1 += array1[i];
+      }
+    }
+  };
+})();
+_.compact([1, "hello", undefined, 3, undefined]);
+
+
+//_.map
+var _ = (function(){
+  return{
+    map: function(array1, action1){
+      for(var i = 0; i < array1.length; i++){
+       var newArray = action1(array1[i]);
+        console.log(newArray);
+      }
+      return;
+    }
+  };
+})();
+_.map([1, 2, 3], function(num){ return num * 3; });
+
+//_.filter
+
+var _ = (function(){
+  return{
+    filter: function(array1, secondNumber){
+      for(var i = 0; i < array1.length; i++){
+        var outcome1 = secondNumber(array1[i]); 
+        if (outcome1 === true){
+          console.log(array1[i]);
+        }
+      }
+    }
+  };
+})();
+_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 === 0; });
+
